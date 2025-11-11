@@ -80,7 +80,6 @@ const Index = () => {
             {/* SendPulse Form */}
             <div className="max-w-md mx-auto">
               <style dangerouslySetInnerHTML={{__html: `
-                .sp-force-hide { display: none;}
                 .sp-form[sp-id="250215"] { display: block; background: rgba(255, 255, 255, 1); padding: 15px; width: 450px; max-width: 100%; border-radius: 8px; border-color: #dddddd; border-style: solid; border-width: 1px; font-family: Arial, "Helvetica Neue", sans-serif; background-repeat: no-repeat; background-position: center; background-size: auto;}
                 .sp-form[sp-id="250215"] input[type="checkbox"] { display: inline-block; opacity: 1; visibility: visible;}
                 .sp-form[sp-id="250215"] .sp-form-fields-wrapper { margin: 0 auto; width: 420px;}
@@ -90,7 +89,7 @@ const Index = () => {
                 .sp-form[sp-id="250215"] .sp-button { border-radius: 4px; background-color: #39b500; color: #ffffff; width: auto; font-weight: 700; font-style: normal; font-family: Arial, "Helvetica Neue", sans-serif; box-shadow: none; border-width: 1px; border-color: #ffffff; border-style: solid;}
                 .sp-form[sp-id="250215"] .sp-button-container { text-align: left;}
               `}} />
-              <div className="sp-form-outer sp-force-hide">
+              <div className="sp-form-outer">
                 <div id="sp-form-250215" sp-id="250215" sp-hash="9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126" sp-lang="pt-br" className="sp-form sp-form-regular sp-form-embed" sp-show-options='{"satellite":false,"maDomain":"login.sendpulse.com","formsDomain":"forms.sendpulse.com","condition":"onEnter","scrollTo":25,"delay":10,"repeat":3,"background":"rgba(0, 0, 0, 0.5)","position":"bottom-right","animation":"","hideOnMobile":false,"submitRedirectUrl":"","urlFilter":false,"urlFilterConditions":[{"force":"hide","clause":"contains","token":""}],"analytics":{"ga":{"eventLabel":null,"send":false}},"utmEnable":false}'>
                   <div className="sp-form-fields-wrapper">
                     <div className="sp-message"><div></div></div>
