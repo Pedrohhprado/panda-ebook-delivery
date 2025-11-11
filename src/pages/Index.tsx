@@ -1,104 +1,32 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { Loader2, CheckCircle2, BookOpen, TrendingUp, BarChart3 } from "lucide-react";
+import { BookOpen, TrendingUp, BarChart3 } from "lucide-react";
 import heroImage from "@/assets/hero-pandas.jpg";
 
 const Index = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const { toast } = useToast();
+  useEffect(() => {
+    // Load SendPulse form script
+    const script = document.createElement('script');
+    script.src = '//web.webformscr.com/apps/fc3/build/loader.js';
+    script.async = true;
+    script.setAttribute('sp-form-id', '9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126');
+    document.body.appendChild(script);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!name.trim() || !email.trim()) {
-      toast({
-        title: "Campos obrigatórios",
-        description: "Por favor, preencha todos os campos.",
-        variant: "destructive",
-      });
-      return;
-    }
+    // Load SendPulse default handler
+    const handlerScript = document.createElement('script');
+    handlerScript.src = '//web.webformscr.com/apps/fc3/build/default-handler.js?1700557987608';
+    handlerScript.async = true;
+    document.body.appendChild(handlerScript);
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      toast({
-        title: "Email inválido",
-        description: "Por favor, insira um email válido.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsLoading(true);
-    console.log("Sending ebook request:", { name, email });
-
-    try {
-      const { data, error } = await supabase.functions.invoke('send-ebook-email', {
-        body: { name, email }
-      });
-
-      if (error) {
-        console.error("Error invoking function:", error);
-        throw error;
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
       }
-
-      console.log("Success response:", data);
-      setIsSuccess(true);
-      toast({
-        title: "Sucesso! 🎉",
-        description: "Verifique seu email para receber o ebook.",
-      });
-      
-      // Reset form
-      setName("");
-      setEmail("");
-      
-    } catch (error: any) {
-      console.error("Error:", error);
-      toast({
-        title: "Erro ao enviar",
-        description: error.message || "Tente novamente mais tarde.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  if (isSuccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-accent/5 px-4">
-        <Card className="max-w-md w-full shadow-[var(--shadow-card)] border-border/50">
-          <CardContent className="pt-12 pb-12 text-center">
-            <div className="mb-6 flex justify-center">
-              <div className="rounded-full bg-primary/10 p-4">
-                <CheckCircle2 className="h-16 w-16 text-primary" />
-              </div>
-            </div>
-            <h2 className="text-3xl font-bold mb-4 text-foreground">Email Enviado!</h2>
-            <p className="text-muted-foreground mb-6 text-lg">
-              Verifique sua caixa de entrada. Em breve você receberá o ebook completo sobre Pandas! 🐼
-            </p>
-            <Button 
-              onClick={() => setIsSuccess(false)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground"
-            >
-              Enviar para outro email
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+      if (document.body.contains(handlerScript)) {
+        document.body.removeChild(handlerScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
@@ -149,67 +77,17 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Form Card */}
+            {/* SendPulse Form */}
             <Card className="max-w-md mx-auto shadow-[var(--shadow-elegant)] border-border/50">
               <CardContent className="pt-8 pb-8">
-                <h2 className="text-2xl font-bold mb-6 text-foreground">
-                  Receba Gratuitamente
-                </h2>
-                
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="space-y-2 text-left">
-                    <Label htmlFor="name" className="text-foreground font-medium">
-                      Seu Nome
-                    </Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      placeholder="Digite seu nome completo"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="h-12 border-input focus:ring-ring"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-
-                  <div className="space-y-2 text-left">
-                    <Label htmlFor="email" className="text-foreground font-medium">
-                      Melhor Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="seu@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="h-12 border-input focus:ring-ring"
-                      required
-                      disabled={isLoading}
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-card)] transition-all"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? (
-                      <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Enviando...
-                      </>
-                    ) : (
-                      <>
-                        Receber Ebook Grátis 🎁
-                      </>
-                    )}
-                  </Button>
-                </form>
-
-                <p className="text-xs text-muted-foreground mt-4">
-                  Ao se inscrever, você concorda em receber emails sobre Pandas e análise de dados.
-                </p>
+                <div 
+                  id="sp-form-250215" 
+                  sp-id="250215" 
+                  sp-hash="9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126" 
+                  sp-lang="pt-br" 
+                  className="sp-form sp-form-regular sp-form-embed"
+                  sp-show-options='{"satellite":false,"maDomain":"login.sendpulse.com","formsDomain":"forms.sendpulse.com","condition":"onEnter","scrollTo":25,"delay":10,"repeat":3,"background":"rgba(0, 0, 0, 0.5)","position":"bottom-right","animation":"","hideOnMobile":false,"submitRedirectUrl":"","urlFilter":false,"urlFilterConditions":[{"force":"hide","clause":"contains","token":""}],"analytics":{"ga":{"eventLabel":null,"send":false}},"utmEnable":false}'
+                ></div>
               </CardContent>
             </Card>
           </div>
