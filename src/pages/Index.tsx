@@ -7,14 +7,14 @@ const Index = () => {
   useEffect(() => {
     // Load SendPulse form script
     const script = document.createElement('script');
-    script.src = 'https://web.webformscr.com/apps/fc3/build/loader.js';
+    script.src = '//web.webformscr.com/apps/fc3/build/loader.js';
     script.async = true;
     script.setAttribute('sp-form-id', '9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126');
-    document.head.appendChild(script);
+    document.body.appendChild(script);
 
     return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
       }
     };
   }, []);
