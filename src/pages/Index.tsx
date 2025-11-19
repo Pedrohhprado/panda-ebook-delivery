@@ -83,14 +83,8 @@ const Index = () => {
 
           {/* FORMULÁRIO SENDPULSE */}
           <div className="max-w-md mx-auto mt-10">
-            <div className="relative p-8 bg-gradient-to-br from-card via-card to-primary/5 border-2 border-primary/20 rounded-2xl shadow-[var(--shadow-elegant)] hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.4)] transition-all duration-300 backdrop-blur-sm">
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl -z-10" />
-              
-              {/* LOCAL ONDE O FORMULÁRIO SERÁ INJETADO */}
-              <div id="sp-form-9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126"></div>
-            </div>
+            {/* LOCAL ONDE O FORMULÁRIO SERÁ INJETADO */}
+            <div id="sp-form-9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126"></div>
           </div>
 
         </div>
