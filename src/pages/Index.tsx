@@ -55,33 +55,39 @@ const Index = () => {
           {/* Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <div className="flex flex-col items-center p-6 bg-card rounded-xl shadow-[var(--shadow-card)] border border-border/50 hover:shadow-[var(--shadow-elegant)] transition-all">
-              <BookOpen className="h-10 w-10 text-primary mb-3" />
-              <h3 className="font-semibold text-lg mb-2 text-foreground">Conteúdo Prático</h3>
-              <p className="text-sm text-muted-foreground">Exemplos reais e aplicáveis</p>
+            <div className="group flex flex-col items-center p-8 bg-gradient-to-br from-card to-primary/5 rounded-2xl shadow-[var(--shadow-card)] border border-primary/20 hover:shadow-[var(--shadow-elegant)] hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+              <div className="p-4 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
+                <BookOpen className="h-10 w-10 text-primary" />
+              </div>
+              <h3 className="font-bold text-xl mb-2 text-foreground">Conteúdo Prático</h3>
+              <p className="text-sm text-muted-foreground text-center">Exemplos reais e aplicáveis no seu dia a dia</p>
             </div>
 
-            <div className="flex flex-col items-center p-6 bg-card rounded-xl shadow-[var(--shadow-card)] border border-border/50 hover:shadow-[var(--shadow-elegant)] transition-all">
-              <TrendingUp className="h-10 w-10 text-primary mb-3" />
-              <h3 className="font-semibold text-lg mb-2 text-foreground">Do Zero ao Avançado</h3>
-              <p className="text-sm text-muted-foreground">Aprenda do básico ao expert</p>
+            <div className="group flex flex-col items-center p-8 bg-gradient-to-br from-card to-primary/5 rounded-2xl shadow-[var(--shadow-card)] border border-primary/20 hover:shadow-[var(--shadow-elegant)] hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+              <div className="p-4 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
+                <TrendingUp className="h-10 w-10 text-primary" />
+              </div>
+              <h3 className="font-bold text-xl mb-2 text-foreground">Do Zero ao Avançado</h3>
+              <p className="text-sm text-muted-foreground text-center">Aprenda do básico ao expert passo a passo</p>
             </div>
 
-            <div className="flex flex-col items-center p-6 bg-card rounded-xl shadow-[var(--shadow-card)] border border-border/50 hover:shadow-[var(--shadow-elegant)] transition-all">
-              <BarChart3 className="h-10 w-10 text-primary mb-3" />
-              <h3 className="font-semibold text-lg mb-2 text-foreground">Análise de Dados</h3>
-              <p className="text-sm text-muted-foreground">Técnicas profissionais</p>
+            <div className="group flex flex-col items-center p-8 bg-gradient-to-br from-card to-primary/5 rounded-2xl shadow-[var(--shadow-card)] border border-primary/20 hover:shadow-[var(--shadow-elegant)] hover:scale-105 hover:-translate-y-2 transition-all duration-300">
+              <div className="p-4 bg-primary/10 rounded-full mb-4 group-hover:bg-primary/20 transition-colors">
+                <BarChart3 className="h-10 w-10 text-primary" />
+              </div>
+              <h3 className="font-bold text-xl mb-2 text-foreground">Análise de Dados</h3>
+              <p className="text-sm text-muted-foreground text-center">Técnicas profissionais de análise</p>
             </div>
 
           </div>
 
           {/* FORMULÁRIO SENDPULSE */}
           <div className="max-w-md mx-auto mt-10">
-            <div className="p-6 bg-card border border-border/50 rounded-xl shadow-[var(--shadow-card)]">
-              <h2 className="text-xl font-semibold text-center mb-4 text-foreground">
-                Receba o Ebook Grátis
-              </h2>
-
+            <div className="relative p-8 bg-gradient-to-br from-card via-card to-primary/5 border-2 border-primary/20 rounded-2xl shadow-[var(--shadow-elegant)] hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.4)] transition-all duration-300 backdrop-blur-sm">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl -z-10" />
+              
               {/* LOCAL ONDE O FORMULÁRIO SERÁ INJETADO */}
               <div id="sp-form-9abd7ad390058e59f3c605c951e41362808398ee3107e038d77a8de5cccb6126"></div>
             </div>
